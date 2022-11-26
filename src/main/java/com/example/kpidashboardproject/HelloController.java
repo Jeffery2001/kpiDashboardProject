@@ -1,6 +1,8 @@
 package com.example.kpidashboardproject;
 
+import javafx.application.Application;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.control.Label;
 import javafx.beans.value.ChangeListener;
@@ -10,8 +12,9 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.stage.Stage;
 
-public class HelloController {
+public class HelloController extends Application {
     @FXML
     private Label welcomeText;
 
@@ -76,7 +79,7 @@ public class HelloController {
     ////////////////////////////////
     ////////INITIALIZE
     ///////////////////////////////
-    public void initialize() {
+    @Override public void start(Stage stage) {
         //fx:ids for JAVAFX file:
         //appointment-listing conversion rate: ALCRLineChart
         //average commission per sale: ACPSLineChart
@@ -114,6 +117,8 @@ public class HelloController {
             }
         }
         ALCRLineChart.getData().add(ALCRSeries);
+
+
 
         //AVERAGE COMMISSION PER SALE LINE CHART
         //creating chart
@@ -176,6 +181,7 @@ public class HelloController {
         }
         ATMLineChart.getData().add(ATMSeries);
 
+
         //HOMES SOLD LINE CHART
         //creating chart
         final LineChart<Number, Number> HomesSoldLineChart = new LineChart<Number, Number>(xAxis, yAxis);
@@ -195,7 +201,14 @@ public class HelloController {
             }
         }
         ATMLineChart.getData().add(HomesSoldSeries);
+        stage.show();
     }
+
+    public static void main(String[]args){
+        launch(args);
+    }
+
+
     ///////////////////////
     ////end initialize
     ///////////////////////
